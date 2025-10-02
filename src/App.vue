@@ -30,6 +30,7 @@ function go()
         for (let j = 1; j <= n; ++ j) (a[i] as Fraction[])[j] = new Fraction(qpow(i, j - 1));
         (a[i] as Fraction[])[n + 1] = new Fraction(inp.value[i] as string);
     }
+    console.log(a);
     for (let i = 1; i <= n; ++ i)
     {
         let div = (a[i] as Fraction[])[i] as Fraction;
@@ -52,7 +53,7 @@ function go()
     {
         let t = (a[i] as Fraction[])[n + 1] as Fraction;
         if (t.valueOf() == 0) continue;
-        if (ok && t.s > 0) ansnat.value += "+", anslat.value += "-";
+        if (ok && t.s > 0) ansnat.value += "+", anslat.value += "+";
         ok = 1;
         if (t.s < 0) ansnat.value += "-", anslat.value += "-";
         if (t.d == BigInt(1))
