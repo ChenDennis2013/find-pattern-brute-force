@@ -85,6 +85,11 @@ function go()
             anslat.value += "x^{" + (i - 1) + "}";
         }
     }
+    if (ansnat.value.length == 5)
+    {
+        ansnat.value += "0";
+        anslat.value += "0";
+    }
     anslat.value += "$";
     (document.getElementById("answer") as HTMLElement).style.display = "block";
 }
