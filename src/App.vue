@@ -25,10 +25,17 @@ function go()
 {
     let n = xs.value;
     let a = Array.from({length: n + 1}, () => Array.from({length: n + 1}, () => new Fraction(0)));
-    for (let i = 1; i <= n; ++ i)
+    try
     {
-        for (let j = 1; j <= n; ++ j) (a[i] as Fraction[])[j] = new Fraction(qpow(i, j - 1));
-        (a[i] as Fraction[])[n + 1] = new Fraction(inp.value[i] as string);
+        for (let i = 1; i <= n; ++ i)
+        {
+            for (let j = 1; j <= n; ++ j) (a[i] as Fraction[])[j] = new Fraction(qpow(i, j - 1));
+            (a[i] as Fraction[])[n + 1] = new Fraction(inp.value[i] as string);
+        }
+    }
+    catch (e)
+    {
+        window.alert("输入错误！");
     }
     console.log(a);
     for (let i = 1; i <= n; ++ i)
@@ -56,12 +63,12 @@ function go()
         if (ok && t.s > 0) ansnat.value += "+", anslat.value += "+";
         ok = 1;
         if (t.s < 0) ansnat.value += "-", anslat.value += "-";
-        if (t.d == BigInt(1))
+        if (t.d == BigInt(1) && (i == 1 || t.valueOf() != 1))
         {
             ansnat.value += t.n;
             anslat.value += t.n;
         }
-        else
+        else if (t.d != BigInt(1))
         {
             ansnat.value += "(" + t.n + "/" + t.d + ")";
             anslat.value += "\\frac{" + t.n + "}{" + t.d + "}"
